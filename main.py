@@ -19,4 +19,4 @@ def execute_code(event):
 
     output_content = new_stdout.getvalue()
 
-    document.querySelector("#output").innerText = output_content
+    document.querySelector("#output-container").innerText = output_content
