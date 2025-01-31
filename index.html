@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Online Editor</title>
 
     <!-- Recommended meta tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- PyScript CSS -->
-    <link rel="stylesheet" href="https://pyscript.net/releases/2024.10.2/core.css">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.10.2/core.css" />
 
     <!-- PyScript JS -->
     <script type="module" src="https://pyscript.net/releases/2024.10.2/core.js"></script>
@@ -18,33 +20,34 @@
             font-family: Arial, sans-serif;
             padding: 20px;
         }
-        textarea {
-            width: 100%;
-            height: 200px;
-            font-family: monospace;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
+
         button {
             padding: 10px 20px;
             cursor: pointer;
-            background-color: #007BFF;
+            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
         }
-        pre {
-            background: #f8f9fa;
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-top: 10px;
-            white-space: pre-wrap;
+
+        #editor-container {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            height: 300px;
+        }
+
+        #editor {
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
+
 <body>
     <h1>Python Online Editor</h1>
-    <textarea id="code-editor" placeholder="Write your Python code here...">
+
+    <div id="editor-container">
+        <pre id="editor">
 import numpy as np
 from Bio.Seq import Seq
 
@@ -54,10 +57,24 @@ print(np.random.rand(3,2), "\n")
 
 my_seq = Seq("AGTACACTGGT")
 print(my_seq)
-    </textarea>
+    </pre>
+    </div>
+
     <button py-click="execute_code">Run Code</button>
+
     <h2>Output:</h2>
-    <div id="output"></pre>
+    <div id="output"></div>
+
+    <!-- Ace Editor + configurations -->
+    <script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/twilight");
+        editor.session.setMode("ace/mode/python");
+    </script>
+
+    <!--pyscript configs-->
     <script type="py" src="./main.py" config="./pyscript.toml"></script>
 </body>
+
 </html>

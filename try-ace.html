@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Editor</title>
+    <style type="text/css">
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      #editor-container {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        height: 300px;
+        /* Adjust as needed */
+      }
+
+      #editor {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Editor?</h1>
+
+    <div id="editor-container">
+      <pre id="editor">
+import numpy as np
+from Bio.Seq import Seq
+
+print("Hello, World!\n")
+
+print(np.random.rand(3,2), "\n")
+
+my_seq = Seq("AGTACACTGGT")
+print(my_seq)
+      </pre>
+    </div>
+
+    <script
+      src="ace-builds/src-noconflict/ace.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script>
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/twilight");
+      editor.session.setMode("ace/mode/python");
+    </script>
+  </body>
+</html>
