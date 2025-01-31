@@ -3,7 +3,7 @@ import io
 from pyscript import document
 
 def execute_code(event):
-    user_code = document.querySelector("#code-editor").value
+    user_code = document.querySelector("#editor").innerText
 
     #redirect stdout
     old_stdout = sys.stdout
