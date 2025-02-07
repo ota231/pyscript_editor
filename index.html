@@ -29,7 +29,7 @@
 <body>
 
     <div id="button-container">
-        <button py-click="execute_code">Run Code</button>
+        <button py-click="execute_code" id="run-code">Run Code</button>
         <select id="mode-selector" class="form-select">
             <option value="scripting">Scripting Mode</option>
             <option value="interactive">Interactive Mode</option>
@@ -37,8 +37,9 @@
     </div>
 
     <div id='main-container'>
-        <div id="editor-container">
-            <pre id="editor">
+        <div id="scripting-mode">
+            <div id="editor-container">
+                <pre id="editor">
 import numpy as np
 from Bio.Seq import Seq
 
@@ -49,11 +50,17 @@ print(np.random.rand(3,2), "\n")
 my_seq = Seq("AGTACACTGGT")
 print(my_seq)
         </pre>
+            </div>
+
+            <div id="output-container"></div>
         </div>
 
-        <div id="output-container"></div>
-
-
+        <div id="interactive-mode">
+            <script id="interactive_mode" type="mpy" terminal worker>
+                import code
+                code.interact()
+            </script>
+        </div>
     </div>
 
     <!-- Ace Editor + configurations -->

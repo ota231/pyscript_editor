@@ -1,7 +1,8 @@
 import sys
 import io
-from pyscript import document
+from pyscript import document, when
 
+@when("click", "#run-code")
 def execute_code(event):
     user_code = document.querySelector("#editor").innerText
 
@@ -20,3 +21,17 @@ def execute_code(event):
     output_content = new_stdout.getvalue()
 
     document.querySelector("#output-container").innerText = output_content
+
+@when("click", "#mode-selector")
+def switch_modes(event):
+    mode = document.querySelector('#mode-selector').value
+    scripting_mode = document.querySelector("#scripting-mode")
+    interactive_mode = document.querySelector("#interactive-mode")
+
+    if mode == "scripting":
+        scripting_mode.style.display = 'flex'
+        interactive_mode.style.display = "none"
+    else:
+        interactive_mode.style.display = "block"
+        scripting_mode.style.display = 'none'
+        
