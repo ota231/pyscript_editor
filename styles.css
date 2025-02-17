@@ -4,11 +4,16 @@ body {
 
 #button-container {
     display: flex;
-    align-items: center; 
-    gap: 10px;
+    flex-direction: column;
+    gap: 10px; 
     width: 50%;
-    margin-right: auto;
-    padding-bottom: 10px ;
+}
+
+.row {
+    display: flex;
+    gap: 10px; 
+    justify-content: flex-start; 
+    width: 50%;
 }
 
 button {
@@ -55,4 +60,9 @@ button {
 
 #mode-selector {
     width:50%;
+    flex: 1;
+}
+
+#run-code {
+    flex: 1;
 }

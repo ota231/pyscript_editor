@@ -1,5 +1,6 @@
 import sys
 import io
+import time
 from pyscript import document, when
 
 @when("click", "#run-code")
@@ -34,4 +35,5 @@ def switch_modes(event):
     else:
         interactive_mode.style.display = "block"
         scripting_mode.style.display = 'none'
+
         
