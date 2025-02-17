@@ -43,7 +43,13 @@
             <button id="copy-button" class="btn btn-outline-primary mt-2">
                 <i id="copyIcon" class="bi bi-clipboard"></i> Copy
             </button>
-            <p>second thing</p>
+
+            <div id="toggle-class" class="form-check form-switch ms-2">
+                <input class="form-check-input" type="checkbox" id="dark-mode-toggle">
+                <label class="form-check-label" for="dark-mode-toggle">
+                    <i id="mode-icon" class="bi bi-sun"></i> 
+                </label>
+            </div>
         </div>
     </div>
 
@@ -84,7 +90,7 @@ print(my_seq)
         document.getElementById('editor').style.fontSize = '14px';
     </script>
 
-    <!-- copying functionality -->
+    <!-- copying + dark/light mode functionality -->
     <script>
         document.getElementById("copy-button").addEventListener("click", function () {
             var codeContent = document.getElementById("editor").innerText;
@@ -107,6 +113,19 @@ print(my_seq)
                 icon.classList.remove("bi-clipboard-check");
                 icon.classList.add("bi-clipboard");
             }, 1500);
+        });
+
+        document.getElementById("dark-mode-toggle").addEventListener("change", function() {
+            var modeIcon = document.getElementById("mode-icon");
+            if (this.checked) {
+                console.log("changing to dark mode")
+                modeIcon.classList.remove("bi-sun");
+                modeIcon.classList.add("bi-moon");
+            } else {
+                console.log("changing to light mode")
+                modeIcon.classList.remove("bi-moon");
+                modeIcon.classList.add("bi-sun");
+            }
         });
     </script>
 

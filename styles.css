@@ -7,6 +7,7 @@ body {
     flex-direction: column;
     gap: 10px; 
     width: 50%;
+    margin-bottom: 10px;
 }
 
 .row {
@@ -63,6 +64,14 @@ button {
     flex: 1;
 }
 
-#run-code {
+#run-code, #dark-mode-toggle, #copy-button {
     flex: 1;
+}
+
+#toggle-class {
+    flex: 1;
+    justify-content: center; 
+    align-items: center;     
+    border: 1px solid #007bff;
+    border-radius: 5px;
 }
