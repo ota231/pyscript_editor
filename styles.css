@@ -1,5 +1,41 @@
 body {
     padding: 20px;
+    background-color: white;
+    color: black;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode button {
+    background-color: #0056b3; /* Darker blue for dark mode */
+    color: white;
+}
+
+body.dark-mode #editor-container {
+    border: 1px solid #444; /* Softer contrast in dark mode */
+}
+
+body.dark-mode #output-container {
+    background-color: #1e1e1e; /* Dark gray */
+    color: #00ffcc; /* Neon cyan for better readability */
+}
+
+body.dark-mode .form-check-input {
+    background-color: #444;
+    border-color: #888;
+}
+
+body.dark-mode #editor {
+    background: #2b2b2b;
+    color: #f8f8f2; /* Light text for better contrast */
+}
+
+body.dark-mode #toggle-class {
+    border: 1px solid #00ffcc; /* Neon cyan for contrast */
+    background-color: #222; /* Dark gray background */
 }
 
 #button-container {
@@ -23,6 +59,7 @@ button {
     background-color: #007bff;
     color: white;
     border: none;
+    transition: background-color 0.3s ease;
 }
 
 #scripting-mode {

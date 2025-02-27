@@ -26,6 +26,8 @@
     <!--bootstrap pyscript-->
     <script type="module" src="https://pyscript.net/releases/2024.11.1/core.js"></script>
 
+    <!-- <script defer src="https://pyscript.net/releases/2023.03.1/pyscript.js"></script> -->
+
 </head>
 
 <body>
@@ -47,7 +49,7 @@
             <div id="toggle-class" class="form-check form-switch ms-2">
                 <input class="form-check-input" type="checkbox" id="dark-mode-toggle">
                 <label class="form-check-label" for="dark-mode-toggle">
-                    <i id="mode-icon" class="bi bi-sun"></i> 
+                    <i id="mode-icon" class="bi bi-sun"></i>
                 </label>
             </div>
         </div>
@@ -73,11 +75,17 @@ print(my_seq)
         </div>
 
         <div id="interactive-mode">
-            <script id="interactive_mode" type="mpy" terminal worker>
+
+            <script id="interactive_mode" type="mpy" terminal>
                 import code
-                code.interact()
+
+                variables = locals()
+                code.interact(local=variables)
             </script>
+
+
         </div>
+
     </div>
 
     <!-- Ace Editor + configurations -->
@@ -115,18 +123,32 @@ print(my_seq)
             }, 1500);
         });
 
-        document.getElementById("dark-mode-toggle").addEventListener("change", function() {
-            var modeIcon = document.getElementById("mode-icon");
-            if (this.checked) {
-                console.log("changing to dark mode")
-                modeIcon.classList.remove("bi-sun");
-                modeIcon.classList.add("bi-moon");
-            } else {
-                console.log("changing to light mode")
-                modeIcon.classList.remove("bi-moon");
-                modeIcon.classList.add("bi-sun");
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleSwitch = document.getElementById("dark-mode-toggle");
+            const modeIcon = document.getElementById("mode-icon");
+            const body = document.body;
+
+            // Check local storage for dark mode preference
+            if (localStorage.getItem("darkMode") === "enabled") {
+                body.classList.add("dark-mode");
+                toggleSwitch.checked = true;
+                modeIcon.classList.replace("bi-sun", "bi-moon");
             }
+
+            // Toggle dark mode
+            toggleSwitch.addEventListener("change", function () {
+                if (toggleSwitch.checked) {
+                    body.classList.add("dark-mode");
+                    modeIcon.classList.replace("bi-sun", "bi-moon");
+                    localStorage.setItem("darkMode", "enabled");
+                } else {
+                    body.classList.remove("dark-mode");
+                    modeIcon.classList.replace("bi-moon", "bi-sun");
+                    localStorage.setItem("darkMode", "disabled");
+                }
+            });
         });
+
     </script>
 
     <!--pyscript configs-->
