@@ -92,7 +92,6 @@ print(my_seq)
     <script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
     <script>
         var editor = ace.edit("editor");
-        // editor.setTheme("ace/theme/github_light_default");
         editor.session.setMode("ace/mode/python");
 
         document.getElementById('editor').style.fontSize = '14px';
@@ -101,7 +100,8 @@ print(my_seq)
     <!-- copying + dark/light mode functionality -->
     <script>
         document.getElementById("copy-button").addEventListener("click", function () {
-            var codeContent = document.getElementById("editor").innerText;
+            var editor = ace.edit("editor"); // Get the Ace Editor instance
+            var codeContent = editor.getValue(); // Get the actual code input
 
             // Create a temporary textarea element to hold the content
             var textarea = document.createElement("textarea");
