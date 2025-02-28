@@ -92,7 +92,7 @@ print(my_seq)
     <script src="ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
     <script>
         var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/twilight");
+        // editor.setTheme("ace/theme/github_light_default");
         editor.session.setMode("ace/mode/python");
 
         document.getElementById('editor').style.fontSize = '14px';
@@ -128,11 +128,23 @@ print(my_seq)
             const modeIcon = document.getElementById("mode-icon");
             const body = document.body;
 
+            var editor = ace.edit("editor");
+
+            // Function to set the editor theme
+            function updateEditorTheme() {
+                if (body.classList.contains("dark-mode")) {
+                    editor.setTheme("ace/theme/github_dark"); // Dark mode theme
+                } else {
+                    editor.setTheme("ace/theme/github_light_default"); // Light mode theme
+                }
+            }
+
             // Check local storage for dark mode preference
             if (localStorage.getItem("darkMode") === "enabled") {
                 body.classList.add("dark-mode");
                 toggleSwitch.checked = true;
                 modeIcon.classList.replace("bi-sun", "bi-moon");
+                updateEditorTheme();
             }
 
             // Toggle dark mode
@@ -146,6 +158,7 @@ print(my_seq)
                     modeIcon.classList.replace("bi-moon", "bi-sun");
                     localStorage.setItem("darkMode", "disabled");
                 }
+                updateEditorTheme();
             });
         });
 
